@@ -1,0 +1,59 @@
+# Universal Inverter Data Normalizer - Configuration
+# Copy this file to config.yaml and fill in your provider credentials.
+
+server:
+  host: "0.0.0.0"
+  port: 8080
+
+logging:
+  level: "info"       # debug, info, warn, error
+  format: "console"   # console, json
+
+providers:
+  # ── SAJ (Elekeeper / eSolar) ──────────────────────────────────
+  - type: "saj"
+    name: "saj-production"
+    enabled: false
+    base_url: "https://fop.saj-electric.com/saj/api"
+    credentials:
+      app_id: "YOUR_SAJ_APP_ID"
+      app_secret: "YOUR_SAJ_APP_SECRET"
+    rate_limit_rps: 5
+    timeout_seconds: 30
+    timezone: "Asia/Shanghai"
+
+  # ── SMA (Sunny Portal / Monitoring) ──────────────────────────
+  - type: "sma"
+    name: "sma-production"
+    enabled: false
+    base_url: "https://monitoring.sma.de/api/v1"
+    credentials:
+      access_token: "YOUR_SMA_BEARER_TOKEN"
+    rate_limit_rps: 5
+    timeout_seconds: 30
+    timezone: "Europe/Berlin"
+
+  # ── Huawei FusionSolar ───────────────────────────────────────
+  - type: "huawei"
+    name: "huawei-production"
+    enabled: false
+    base_url: "https://intl.fusionsolar.huawei.com/thirdData"
+    credentials:
+      user_name: "YOUR_HUAWEI_USERNAME"
+      system_code: "YOUR_HUAWEI_SYSTEM_CODE"
+    rate_limit_rps: 5
+    timeout_seconds: 30
+    timezone: "UTC"
+
+  # ── Sungrow iSolarCloud ─────────────────────────────────────
+  - type: "sungrow"
+    name: "sungrow-production"
+    enabled: false
+    base_url: "https://gateway.isolarcloud.com"
+    credentials:
+      app_key: "YOUR_SUNGROW_APP_KEY"
+      user_account: "YOUR_SUNGROW_EMAIL"
+      user_password: "YOUR_SUNGROW_PASSWORD"
+    rate_limit_rps: 5
+    timeout_seconds: 30
+    timezone: "Asia/Shanghai"
